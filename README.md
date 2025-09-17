@@ -109,6 +109,10 @@ Application is configured for **Somnia Testnet**:
 - **Native Token**: STT (Somnia Test Token)
 - **Decimals**: 18
 
+## 📊 Application Flow
+
+![Somnia Dev Dashboard Flow](public/flow_somtod.png)
+
 ## 📱 How to Use
 
 ### 1. Connect Wallet
