@@ -1,0 +1,247 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: #ffffff;
+  --foreground: #475569;
+  --card: #f8fafc;
+  --card-foreground: #475569;
+  --popover: #ffffff;
+  --popover-foreground: #475569;
+  --primary: #059669;
+  --primary-foreground: #ffffff;
+  --secondary: #10b981;
+  --secondary-foreground: #ffffff;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #10b981;
+  --accent-foreground: #ffffff;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: #e2e8f0;
+  --input: #f8fafc;
+  --ring: rgba(16, 185, 129, 0.3);
+  --chart-1: #10b981;
+  --chart-2: #059669;
+  --chart-3: #ec4899;
+  --chart-4: #dc2626;
+  --chart-5: #f59e0b;
+  --radius: 0.75rem;
+  --sidebar: #f8fafc;
+  --sidebar-foreground: #475569;
+  --sidebar-primary: #059669;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #10b981;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #e2e8f0;
+  --sidebar-ring: rgba(16, 185, 129, 0.3);
+}
+
+.dark {
+  --background: #0f172a;
+  --foreground: #f1f5f9;
+  --card: #1e293b;
+  --card-foreground: #f1f5f9;
+  --popover: #1e293b;
+  --popover-foreground: #f1f5f9;
+  --primary: #10b981;
+  --primary-foreground: #0f172a;
+  --secondary: #334155;
+  --secondary-foreground: #f1f5f9;
+  --muted: #334155;
+  --muted-foreground: #94a3b8;
+  --accent: #10b981;
+  --accent-foreground: #0f172a;
+  --destructive: #ef4444;
+  --destructive-foreground: #f1f5f9;
+  --border: #334155;
+  --input: #334155;
+  --ring: rgba(16, 185, 129, 0.3);
+  --chart-1: #10b981;
+  --chart-2: #059669;
+  --chart-3: #ec4899;
+  --chart-4: #ef4444;
+  --chart-5: #f59e0b;
+  --sidebar: #1e293b;
+  --sidebar-foreground: #f1f5f9;
+  --sidebar-primary: #10b981;
+  --sidebar-primary-foreground: #0f172a;
+  --sidebar-accent: #334155;
+  --sidebar-accent-foreground: #f1f5f9;
+  --sidebar-border: #334155;
+  --sidebar-ring: rgba(16, 185, 129, 0.3);
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom RainbowKit styles to replace the problematic CSS import */
+/* RainbowKit Button Styles */
+[data-rk] {
+  --rk-colors-accentColor: #10b981;
+  --rk-colors-accentColorForeground: #ffffff;
+  --rk-colors-actionButtonBorder: rgba(255, 255, 255, 0.04);
+  --rk-colors-actionButtonBorderMobile: rgba(255, 255, 255, 0.08);
+  --rk-colors-actionButtonSecondaryBackground: rgba(255, 255, 255, 0.08);
+  --rk-colors-closeButton: rgba(224, 232, 255, 0.6);
+  --rk-colors-closeButtonBackground: rgba(255, 255, 255, 0.08);
+  --rk-colors-connectButtonBackground: #ffffff;
+  --rk-colors-connectButtonBackgroundError: #ff494a;
+  --rk-colors-connectButtonInnerBackground: linear-gradient(0deg, rgba(16, 185, 129, 0.2), rgba(16, 185, 129, 0.2)),
+    linear-gradient(0deg, #10b981, #10b981);
+  --rk-colors-connectButtonText: #25292e;
+  --rk-colors-connectButtonTextError: #ffffff;
+  --rk-colors-connectionIndicator: #30e000;
+  --rk-colors-downloadBottomCardBackground: linear-gradient(
+      126deg,
+      rgba(255, 255, 255, 0) 9.49%,
+      rgba(171, 171, 171, 0.04) 71.04%
+    ), #ffffff;
+  --rk-colors-downloadTopCardBackground: linear-gradient(
+      126deg,
+      rgba(171, 171, 171, 0.2) 9.49%,
+      rgba(255, 255, 255, 0) 71.04%
+    ), #ffffff;
+  --rk-colors-error: #ff494a;
+  --rk-colors-generalBorder: rgba(255, 255, 255, 0.08);
+  --rk-colors-generalBorderDim: rgba(255, 255, 255, 0.04);
+  --rk-colors-menuItemBackground: rgba(224, 232, 255, 0.1);
+  --rk-colors-modalBackdrop: rgba(0, 0, 0, 0.3);
+  --rk-colors-modalBackground: #ffffff;
+  --rk-colors-modalBorder: rgba(255, 255, 255, 0.08);
+  --rk-colors-modalText: #25292e;
+  --rk-colors-modalTextDim: rgba(37, 41, 46, 0.6);
+  --rk-colors-modalTextSecondary: rgba(37, 41, 46, 0.6);
+  --rk-colors-profileAction: rgba(224, 232, 255, 0.1);
+  --rk-colors-profileActionHover: rgba(224, 232, 255, 0.2);
+  --rk-colors-profileForeground: rgba(224, 232, 255, 0.05);
+  --rk-colors-selectedOptionBorder: #10b981;
+  --rk-colors-standby: #ffb300;
+  --rk-fonts-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --rk-radii-actionButton: 12px;
+  --rk-radii-connectButton: 12px;
+  --rk-radii-menuButton: 12px;
+  --rk-radii-modal: 24px;
+  --rk-radii-modalMobile: 28px;
+}
+
+/* Connect Button Styling */
+button[data-testid="rk-connect-button"] {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 12px !important;
+  padding: 12px 24px !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3) !important;
+  transition: all 0.3s ease !important;
+}
+
+button[data-testid="rk-connect-button"]:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4) !important;
+}
+
+/* Account Button Styling */
+button[data-testid="rk-account-button"] {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 12px !important;
+  color: white !important;
+  padding: 12px 16px !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+}
+
+button[data-testid="rk-account-button"]:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Modal Styling */
+div[data-rk] div[role="dialog"] {
+  background: white !important;
+  border-radius: 24px !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Wallet Option Styling */
+button[data-rk]:has([data-testid*="wallet-option"]) {
+  background: #f8fafc !important;
+  border: 2px solid #e2e8f0 !important;
+  border-radius: 16px !important;
+  padding: 16px !important;
+  transition: all 0.3s ease !important;
+}
+
+button[data-rk]:has([data-testid*="wallet-option"]):hover {
+  background: #f1f5f9 !important;
+  border-color: #10b981 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.15) !important;
+}
+
+/* Chain Button Styling */
+button[data-testid="rk-chain-button"] {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 12px !important;
+  color: white !important;
+  padding: 8px 12px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+}

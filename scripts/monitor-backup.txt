@@ -1,0 +1,126 @@
+import "dotenv/config";
+import { ethers } from "ethers";
+import { notifyAll } from "../lib/notifier";
+
+const SOMNIA_RPC = process.env.SOMNIA_RPC || "https://dream-rpc.somnia.network";
+const CONTRACT_ADDRESS = "0xB9A4fC14cEf0a2934be4A28EE91a86639F8800e6".toLowerCase();
+const POLL_INTERVAL = 10_000; // 10 detik sekali
+
+async function startMonitor() {
+  if (!ethers.isAddress(CONTRACT_ADDRESS)) {
+    console.error("❌ Invalid CONTRACT_ADDRESS:", CONTRACT_ADDRESS);
+    process.exit(1);
+  }
+
+  console.log("🚀 Connecting to Somnia RPC:", SOMNIA_RPC);
+  console.log("📋 Monitoring contract:", CONTRACT_ADDRESS);
+
+  const provider = new ethers.JsonRpcProvider(SOMNIA_RPC);
+
+  let lastBlock = await provider.getBlockNumber();
+  console.log(`📦 Starting from block ${lastBlock}`);
+
+  setInterval(async () => {
+    try {
+      const currentBlock = await provider.getBlockNumber();
+
+      if (currentBlock > lastBlock) {
+        for (let b = lastBlock + 1; b <= currentBlock; b++) {
+          console.log(`📦 New block detected: ${b}`);
+
+          const block = await provider.getBlock(b, false); // Get transaction hashes
+          if (!block || !block.transactions) {
+            console.warn(`⚠️ No transactions in block ${b}`);
+            continue;
+          }
+
+          console.log(`🔍 Block ${b} contains ${block.transactions.length} transactions`);
+
+          for (const txHash of block.transactions) {
+            // Ensure txHash is a string
+            if (typeof txHash !== "string") {
+              console.warn(`⚠️ Invalid transaction hash format in block ${b}:`, txHash);
+              continue;
+            }
+
+            console.log(`🔍 Processing tx hash: ${txHash}`);
+
+            // Fetch full transaction details
+            let tx;
+            try {
+              tx = await provider.getTransaction(txHash);
+              if (!tx) {
+                console.warn(`⚠️ Failed to fetch transaction ${txHash} in block ${b}`);
+                continue;
+              }
+            } catch (txError) {
+              console.warn(`⚠️ Error fetching transaction ${txHash}:`, txError);
+              continue;
+            }
+
+            console.log(`🔍 Transaction details:`, JSON.stringify(tx, null, 2));
+
+            // Filter transactions: only process if 'to' matches CONTRACT_ADDRESS
+            if (tx.to?.toLowerCase() !== CONTRACT_ADDRESS) {
+              console.log(`ℹ️ Skipping tx ${txHash}: not related to contract ${CONTRACT_ADDRESS}`);
+              continue;
+            }
+
+            console.log(`🔍 Tx detected for contract: ${tx.hash}`);
+
+            // Get transaction receipt to calculate gas fee
+            let gasFee = "Unknown";
+            try {
+              const receipt = await provider.getTransactionReceipt(tx.hash);
+              if (receipt && receipt.gasUsed && tx.gasPrice) {
+                gasFee = ethers.formatEther(receipt.gasUsed * tx.gasPrice) + " SOM";
+              } else {
+                const gasPrice = tx.gasPrice || (await provider.getGasPrice());
+                gasFee = ethers.formatEther(tx.gasLimit * gasPrice) + " SOM";
+              }
+            } catch (receiptError) {
+              console.warn(`⚠️ Failed to fetch receipt for tx ${tx.hash}:`, receiptError);
+              const gasPrice = tx.gasPrice || (await provider.getGasPrice());
+              gasFee = ethers.formatEther(tx.gasLimit * gasPrice) + " SOM";
+            }
+
+            const value = tx.value ? ethers.formatEther(tx.value) + " SOM" : "0 SOM";
+
+            // Format notification message for Telegram and Discord
+            const message = `🚨 New Tx on Somnia!\n` +
+                           `From: ${tx.from || "Unknown"}\n` +
+                           `To: ${tx.to || "Contract Creation"}\n` +
+                           `Block: ${b}\n` +
+                           `Gas Fee: ${gasFee}`;
+
+            // Send notification
+            try {
+              await notifyAll(message, {
+                title: "Transaction Alert",
+                description: `New transaction detected for contract ${CONTRACT_ADDRESS} in block **${b}**`,
+                color: 0x3498db,
+                fields: [
+                  { name: "From", value: tx.from || "Unknown", inline: true },
+                  { name: "To", value: tx.to || "Contract Creation", inline: true },
+                  { name: "Value", value, inline: true },
+                  { name: "Gas Fee", value: gasFee, inline: true },
+                ],
+                timestamp: new Date().toISOString(),
+              });
+              console.log(`✅ Notification sent for tx ${tx.hash}`);
+            } catch (notifyError) {
+              console.error(`❌ Failed to send notification for tx ${tx.hash}:`, notifyError);
+            }
+          }
+        }
+        lastBlock = currentBlock;
+      }
+    } catch (err) {
+      console.error("❌ Error while polling:", err);
+    }
+  }, POLL_INTERVAL);
+}
+
+startMonitor().catch((err) => {
+  console.error("❌ Monitor error:", err);
+});
