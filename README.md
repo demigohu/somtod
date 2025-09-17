@@ -1,63 +1,63 @@
 # Somnia Dev Dashboard
 
-![Somnia Dev Dashboard](public/flow_somtod.png)
+![Somnia Dev Dashboard](public/zzz.png)
 
-## 📋 Deskripsi
+## 📋 Description
 
-**Somnia Dev Dashboard** adalah aplikasi web profesional untuk inspeksi transaksi blockchain dan kontrak pintar pada jaringan Somnia Network. Aplikasi ini menyediakan antarmuka yang intuitif untuk developer dan pengguna blockchain untuk menganalisis, memantau, dan berinteraksi dengan kontrak pintar di Somnia Testnet.
+**Somnia Dev Dashboard** is a professional web application for blockchain transaction inspection and smart contract analysis on the Somnia Network. This application provides an intuitive interface for developers and blockchain users to analyze, monitor, and interact with smart contracts on Somnia Testnet.
 
-## ✨ Fitur Utama
+## ✨ Key Features
 
 ### 🔍 Transaction Inspector
-- **Analisis Transaksi Real-time**: Masukkan hash transaksi untuk melihat detail lengkap
-- **Decode Event Logs**: Otomatis mendekode event ERC-20 dan ERC-721
-- **Gas Fee Tracking**: Visualisasi riwayat biaya gas dengan chart interaktif
-- **Explorer Integration**: Link langsung ke Somnia Explorer
+- **Real-time Transaction Analysis**: Enter transaction hash to view complete details
+- **Decode Event Logs**: Automatically decode ERC-20 and ERC-721 events
+- **Gas Fee Tracking**: Visualize gas fee history with interactive charts
+- **Explorer Integration**: Direct links to Somnia Explorer
 
 ### 🏗️ Contract Inspector
-- **Real-time Monitoring**: Pantau kontrak secara real-time dengan polling otomatis
-- **Token Information**: Tampilkan informasi token ERC-20 (name, symbol, decimals, total supply)
-- **Event Streaming**: Stream event logs dari kontrak yang dipantau
-- **Address Profiling**: Klik alamat untuk melihat profil dan balance
+- **Real-time Monitoring**: Monitor contracts in real-time with automatic polling
+- **Token Information**: Display ERC-20 token information (name, symbol, decimals, total supply)
+- **Event Streaming**: Stream event logs from monitored contracts
+- **Address Profiling**: Click addresses to view profile and balance
 
 ### ✅ Contract Verification
-- **Source Code Verification**: Verifikasi kontrak dengan source code Solidity
-- **Compiler Options**: Dukungan berbagai versi compiler (0.8.18, 0.8.19, 0.8.20)
-- **Optimization Settings**: Konfigurasi optimization dan runs
-- **License Management**: Pilihan lisensi (MIT, GPL-3.0, Apache-2.0)
+- **Source Code Verification**: Verify contracts with Solidity source code
+- **Compiler Options**: Support for various compiler versions (0.8.18, 0.8.19, 0.8.20)
+- **Optimization Settings**: Configure optimization and runs
+- **License Management**: License options (MIT, GPL-3.0, Apache-2.0)
 
 ### 📝 Contract Interaction
-- **Read Functions**: Baca data kontrak (name, symbol, decimals, total supply, balance)
-- **Write Functions**: Interaksi dengan kontrak (transfer ERC-20)
-- **Wallet Integration**: Koneksi wallet melalui RainbowKit
-- **Transaction Management**: Kelola transaksi dengan feedback real-time
+- **Read Functions**: Read contract data (name, symbol, decimals, total supply, balance)
+- **Write Functions**: Interact with contracts (ERC-20 transfer)
+- **Wallet Integration**: Connect wallet through RainbowKit
+- **Transaction Management**: Manage transactions with real-time feedback
 
-## 🛠️ Teknologi yang Digunakan
+## 🛠️ Technologies Used
 
 ### Frontend
-- **Next.js 14.2.16** - React framework dengan App Router
-- **TypeScript** - Type safety dan developer experience
+- **Next.js 14.2.16** - React framework with App Router
+- **TypeScript** - Type safety and developer experience
 - **Tailwind CSS** - Utility-first CSS framework
-- **Radix UI** - Komponen UI yang accessible
-- **Recharts** - Library chart untuk visualisasi data
+- **Radix UI** - Accessible UI components
+- **Recharts** - Chart library for data visualization
 
 ### Blockchain Integration
-- **Wagmi** - React hooks untuk Ethereum
+- **Wagmi** - React hooks for Ethereum
 - **RainbowKit** - Wallet connection UI
-- **Viem** - TypeScript interface untuk Ethereum
-- **Ethers.js** - Library untuk berinteraksi dengan blockchain
+- **Viem** - TypeScript interface for Ethereum
+- **Ethers.js** - Library for blockchain interaction
 
 ### Development Tools
 - **ESLint** - Code linting
 - **PostCSS** - CSS processing
-- **Vercel Analytics** - Analytics dan monitoring
+- **Vercel Analytics** - Analytics and monitoring
 
-## 🚀 Instalasi dan Setup
+## 🚀 Installation and Setup
 
 ### Prerequisites
 - Node.js 18+ 
-- npm atau pnpm
-- Wallet browser (MetaMask, WalletConnect, dll)
+- npm or pnpm
+- Browser wallet (MetaMask, WalletConnect, etc.)
 
 ### 1. Clone Repository
 ```bash
@@ -68,14 +68,14 @@ cd somtod-fixed
 ### 2. Install Dependencies
 ```bash
 npm install
-# atau
+# or
 pnpm install
 ```
 
 ### 3. Environment Variables
-Buat file `.env.local` di root directory:
+Create `.env.local` file in root directory:
 ```env
-# WalletConnect Project ID (dapatkan dari https://cloud.walletconnect.com/)
+# WalletConnect Project ID (get from https://cloud.walletconnect.com/)
 NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID=your_project_id
 
 # Optional: Notification services
@@ -87,13 +87,13 @@ DISCORD_WEBHOOK_URL=your_discord_webhook_url
 ### 4. Run Development Server
 ```bash
 npm run dev
-# atau
+# or
 pnpm dev
 ```
 
-Aplikasi akan berjalan di `http://localhost:3000`
+Application will run at `http://localhost:3000`
 
-### 5. Build untuk Production
+### 5. Build for Production
 ```bash
 npm run build
 npm start
@@ -101,7 +101,7 @@ npm start
 
 ## 🌐 Network Configuration
 
-Aplikasi dikonfigurasi untuk **Somnia Testnet**:
+Application is configured for **Somnia Testnet**:
 
 - **Chain ID**: 50312
 - **RPC URL**: https://dream-rpc.somnia.network
@@ -109,44 +109,44 @@ Aplikasi dikonfigurasi untuk **Somnia Testnet**:
 - **Native Token**: STT (Somnia Test Token)
 - **Decimals**: 18
 
-## 📱 Cara Penggunaan
+## 📱 How to Use
 
-### 1. Koneksi Wallet
-- Klik tombol "Connect Wallet" di header
-- Pilih wallet yang didukung (MetaMask, WalletConnect, dll)
-- Approve koneksi di wallet Anda
+### 1. Connect Wallet
+- Click "Connect Wallet" button in header
+- Select supported wallet (MetaMask, WalletConnect, etc.)
+- Approve connection in your wallet
 
-### 2. Analisis Transaksi
-- Pilih tab "🔍 Transaction Inspector"
-- Masukkan hash transaksi (0x...)
-- Klik "🔎 Analyze Transaction"
-- Lihat detail transaksi dan event logs
+### 2. Analyze Transaction
+- Select "🔍 Transaction Inspector" tab
+- Enter transaction hash (0x...)
+- Click "🔎 Analyze Transaction"
+- View transaction details and event logs
 
-### 3. Monitor Kontrak
-- Pilih tab "🏗️ Contract Inspector"
-- Masukkan alamat kontrak (0x...)
-- Klik "▶️ Start Monitoring"
-- Lihat event real-time dan informasi token
+### 3. Monitor Contract
+- Select "🏗️ Contract Inspector" tab
+- Enter contract address (0x...)
+- Click "▶️ Start Monitoring"
+- View real-time events and token information
 
-### 4. Verifikasi Kontrak
-- Pilih tab "✅ Verify Contract"
-- Masukkan alamat kontrak dan source code
-- Konfigurasi compiler settings
-- Klik "✅ Verify Contract"
+### 4. Verify Contract
+- Select "✅ Verify Contract" tab
+- Enter contract address and source code
+- Configure compiler settings
+- Click "✅ Verify Contract"
 
-### 5. Interaksi Kontrak
-- Setelah verifikasi berhasil, pilih tab "📝 Read/Write Contract"
-- Baca data kontrak (name, symbol, balance, dll)
-- Lakukan transfer token ERC-20
+### 5. Interact with Contract
+- After successful verification, select "📝 Read/Write Contract" tab
+- Read contract data (name, symbol, balance, etc.)
+- Perform ERC-20 token transfer
 
-## 🏗️ Struktur Proyek
+## 🏗️ Project Structure
 
 ```
 somtod-fixed/
 ├── app/                    # Next.js App Router
-│   ├── layout.tsx         # Root layout dengan providers
+│   ├── layout.tsx         # Root layout with providers
 │   ├── page.tsx           # Main dashboard page
-│   ├── providers.tsx      # Wallet dan query providers
+│   ├── providers.tsx      # Wallet and query providers
 │   └── globals.css        # Global styles
 ├── components/            # Reusable components
 │   ├── ui/               # Radix UI components
@@ -157,22 +157,22 @@ somtod-fixed/
 │   ├── notifier.ts       # Notification services
 │   └── utils.ts          # General utilities
 ├── public/               # Static assets
-│   ├── flow_somtod.png   # Flowchart diagram
+│   ├── zzz.png          # Application logo
 │   └── favicon.png       # App icon
 └── scripts/              # Utility scripts
     └── monitor.ts        # Monitoring script
 ```
 
-## 🔧 Konfigurasi
+## 🔧 Configuration
 
 ### WalletConnect Setup
-1. Daftar di [WalletConnect Cloud](https://cloud.walletconnect.com/)
-2. Buat project baru
-3. Copy Project ID ke environment variables
-4. Konfigurasi domain yang diizinkan
+1. Register at [WalletConnect Cloud](https://cloud.walletconnect.com/)
+2. Create new project
+3. Copy Project ID to environment variables
+4. Configure allowed domains
 
-### Custom Network (Opsional)
-Untuk menggunakan network lain, edit `app/providers.tsx`:
+### Custom Network (Optional)
+To use another network, edit `app/providers.tsx`:
 
 ```typescript
 export const customChain: Chain = {
@@ -201,39 +201,39 @@ export const customChain: Chain = {
 ### Common Issues
 
 **1. Wallet Connection Failed**
-- Pastikan wallet sudah terinstall
-- Check network di wallet (harus Somnia Testnet)
-- Refresh halaman dan coba lagi
+- Ensure wallet is installed
+- Check network in wallet (must be Somnia Testnet)
+- Refresh page and try again
 
 **2. Transaction Not Found**
-- Pastikan hash transaksi valid
-- Check apakah transaksi ada di Somnia Testnet
-- Pastikan RPC endpoint aktif
+- Ensure transaction hash is valid
+- Check if transaction exists on Somnia Testnet
+- Ensure RPC endpoint is active
 
 **3. Contract Interaction Failed**
-- Pastikan wallet sudah connect
-- Check balance STT untuk gas fee
-- Pastikan kontrak address valid
+- Ensure wallet is connected
+- Check STT balance for gas fees
+- Ensure contract address is valid
 
 **4. Build Errors**
 ```bash
-# Clear cache dan reinstall
+# Clear cache and reinstall
 rm -rf node_modules package-lock.json
 npm install
 npm run build
 ```
 
-## 🤝 Kontribusi
+## 🤝 Contributing
 
 1. Fork repository
-2. Buat feature branch (`git checkout -b feature/amazing-feature`)
+2. Create feature branch (`git checkout -b feature/amazing-feature`)
 3. Commit changes (`git commit -m 'Add amazing feature'`)
-4. Push ke branch (`git push origin feature/amazing-feature`)
-5. Buat Pull Request
+4. Push to branch (`git push origin feature/amazing-feature`)
+5. Create Pull Request
 
-## 📄 Lisensi
+## 📄 License
 
-Proyek ini menggunakan lisensi MIT. Lihat file `LICENSE` untuk detail.
+This project uses MIT license. See `LICENSE` file for details.
 
 ## 🔗 Links
 
@@ -244,8 +244,8 @@ Proyek ini menggunakan lisensi MIT. Lihat file `LICENSE` untuk detail.
 
 ## 👨‍💻 Developer
 
-Dibuat dengan ❤️ untuk komunitas Somnia Network
+Made with ❤️ for the Somnia Network community
 
 ---
 
-**Catatan**: Aplikasi ini dikhususkan untuk Somnia Testnet. Pastikan Anda menggunakan testnet untuk development dan testing.
+**Note**: This application is specifically designed for Somnia Testnet. Please ensure you use testnet for development and testing.
